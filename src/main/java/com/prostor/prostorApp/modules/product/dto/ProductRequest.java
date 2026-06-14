@@ -1,27 +1,27 @@
-package com.prostor.prostorApp.modules.product.dto;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
 
-
-@Data
 public class ProductRequest {
-    @NotBlank
-    @Size(max = 150)
+
+    @NotBlank(message = "Название товара обязательно")
+    @Size(max = 150, message = "Название не должно превышать 150 символов")
     private String name;
 
-    @NotNull
-    @Positive
-    private double price;
+    @NotNull(message = "Цена обязательна")
+    @Positive(message = "Цена должна быть положительной")
+    private Double price;
 
-    @NotNull
+    @NotNull(message = "ID продавца обязателен")
     private Integer sellerId;
 
-    @NotNull
+    @NotNull(message = "ID категории обязателен")
     private Integer categoryId;
 
+   
+    @Positive(message = "ID родительского товара (если указан) должен быть положительным")
     private Integer parentId;
+
+   
 }
